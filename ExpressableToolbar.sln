@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressableToolbar", "ExpressableToolbar\ExpressableToolbar.csproj", "{1E3C24AE-77A9-4225-988D-79CF80E4EFAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E3C24AE-77A9-4225-988D-79CF80E4EFAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E3C24AE-77A9-4225-988D-79CF80E4EFAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E3C24AE-77A9-4225-988D-79CF80E4EFAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E3C24AE-77A9-4225-988D-79CF80E4EFAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0482A7D-592A-4C23-AF89-44C6E207F952}
+	EndGlobalSection
+EndGlobal

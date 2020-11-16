@@ -1,0 +1,34 @@
+﻿<Window x:Class="ExpressableToolbar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExpressableToolbar"
+        Topmost="True"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="171"
+        Width="868"
+        SizeToContent="WidthAndHeight"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="{x:Null}">
+    <Border x:Name="ToolbarBorder"
+            MouseDown="Border_MouseDown"
+            BorderThickness="1.5"
+            Height="54"
+            CornerRadius="25,25,25,25"
+            Background="#FF353238"
+            Margin="25,25,25,25"
+            VerticalAlignment="Top"
+            BorderBrush="#FF54575F"
+            Padding="30,0,0,0"
+            ClipToBounds="True">
+        <Grid x:Name="ToolbarGrid"
+              VerticalAlignment="Stretch"
+              ClipToBounds="False">
+            <Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>
+        </Grid>
+    </Border>
+</Window>
