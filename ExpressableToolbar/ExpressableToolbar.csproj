@@ -66,12 +66,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HotKeyManager.cs" />
+    <Compile Include="ToolbarShadow.xaml.cs">
+      <DependentUpon>ToolbarShadow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\ExpressBrushSettingTool.cs" />
     <Compile Include="ExpressTool.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ToolbarShadow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PhotoshopManager.cs" />
@@ -112,6 +120,8 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="BrushRadius.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

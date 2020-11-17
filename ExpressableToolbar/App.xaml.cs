@@ -13,5 +13,12 @@ namespace ExpressableToolbar
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            ToolbarShadow shadow = new ToolbarShadow();
+            MainWindow main = new MainWindow(shadow);
+            shadow.Show();
+            main.Show();
+        }
     }
 }

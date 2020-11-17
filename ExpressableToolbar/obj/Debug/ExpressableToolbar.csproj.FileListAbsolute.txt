@@ -17,3 +17,5 @@ C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\bin\Debug\WpfScree
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\Interop.Photoshop.dll
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\ExpressableToolbar.csproj.ResolveComReference.cache
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\ExpressableToolbar.csproj.CopyComplete
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\ToolbarShadow.g.cs
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\ToolbarShadow.baml

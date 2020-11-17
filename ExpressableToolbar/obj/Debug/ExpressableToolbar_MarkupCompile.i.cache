@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\App.xaml
-11151548125
+21262756534
 
-91728840272
+11-1685047296
 15619955344
-MainWindow.xaml;
+MainWindow.xaml;ToolbarShadow.xaml;
 
-False
+True
 

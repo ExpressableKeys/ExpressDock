@@ -23,7 +23,7 @@ namespace ExpressableToolbar
 
 		private Point ScreenCenter;
 
-		private bool UseDeltaResize = false;
+		private bool UseDeltaResize = true;
 
 		public override void OnMouseDown(object sender, MouseButtonEventArgs e)
 		{
@@ -44,8 +44,6 @@ namespace ExpressableToolbar
 			ScreenCenter =
 				new Point((area.Width / 2) + (area.Left) - winX,
 						  (area.Height / 2) + (area.Top) - winY);
-
-			Trace.WriteLine(ScreenCenter.X + " " + ScreenCenter.Y);
 
 			BrushRadiusPopup.PlacementRectangle =
 				new Rect(area.Left,
@@ -109,6 +107,21 @@ namespace ExpressableToolbar
 		{
 			PhotoshopManager.Initialize();
 
+			ButtonControl.Background = new SolidColorBrush(Color.FromRgb(15, 15, 15));
+
+			var style = new Style
+			{
+				TargetType = typeof(Border)
+			};
+
+			style.Setters.Add(new Setter
+			{
+				Property = Border.CornerRadiusProperty,
+				Value = new CornerRadius(26)
+			});
+
+			ButtonControl.Resources.Add(typeof(Border), style);
+
 			BrushRadiusPopup = new Popup
 			{
 				AllowsTransparency = true,
@@ -125,7 +138,7 @@ namespace ExpressableToolbar
 
 			BrushRadiusPopup.Child = border;
 
-			var uriSource = new Uri("teiost.png", UriKind.Relative);
+			var uriSource = new Uri("BrushRadius.png", UriKind.Relative);
 
 			var image = new Image
 			{
