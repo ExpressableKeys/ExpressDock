@@ -1,6 +1,7 @@
 ﻿// Copyright 2020 Expressable. All Rights Reserved.
 
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Photoshop;
 
@@ -12,19 +13,13 @@ namespace Expressable
 
         static public void Initialize()
         {
-            if (App != null)
-                return;
-
-            // Try to get a running instance of the Photoshop COM object.
-            try
+            if (Process.GetProcessesByName("Photoshop").Length > 0)
             {
-                App = (Photoshop.Application)Marshal.GetActiveObject("Photoshop.Application");
+                Trace.WriteLine("How???");
+                App = new Photoshop.Application();
             }
-            catch (COMException ex)
+            else
             {
-                Console.WriteLine("Photoshop instance is not running.");
-                Console.WriteLine(ex.Message);
-
                 App = null;
             }
         }
@@ -32,12 +27,16 @@ namespace Expressable
         static public bool IsActive()
         {
             Initialize();
-
             return App != null;
         }
 
         static public double GetBrushDiameter()
         {
+            if(!IsActive())
+            {
+                return -1;
+            }
+
             try
             {
                 var ref1 = new ActionReference();
@@ -63,11 +62,13 @@ namespace Expressable
 
         static public void SetBrushDiameter(double size)
         {
-            if (App == null)
-                Initialize();
+            if(!IsActive())
+            {
+                return;
+            }
 
             // Retry again incase photoshop instance dies
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 1; i++)
             {
                 try
                 {

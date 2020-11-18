@@ -9,7 +9,7 @@
         AllowsTransparency="True"
         Background="{x:Null}"
         mc:Ignorable="d"
-        Title="ToolbarShadow" Height="0" Width="0">
+        Title="ToolbarShadow" Height="100" Width="100">
   <Window.Resources>
     <Storyboard x:Key="FadeIn"
                 x:Name="FadeIn">
@@ -30,11 +30,7 @@
           CornerRadius="25"
           Margin="27">
         <Border.Effect>
-            <DropShadowEffect x:Name="ShadowEffect"
-                              BlurRadius="30"
-                              Opacity=".7"
-                              Direction="270"
-                              ShadowDepth="0" />
+            <BlurEffect Radius="25"/>
         </Border.Effect>
     </Border>
 

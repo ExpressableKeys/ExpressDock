@@ -6,7 +6,6 @@
         xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
         xmlns:local="clr-namespace:ExpressableToolbar"
         xmlns:shell1="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        ContentRendered="Window_ContentRendered"
         ResizeMode="NoResize"
         LocationChanged="Window_LocationChanged"
         Topmost="True"
@@ -19,7 +18,9 @@
         SizeToContent="WidthAndHeight"
         Background="{x:Null}">
   <Border x:Name="ToolbarBorder"
-          MouseDown="Border_MouseDown"
+          MouseDown="ToolbarBorder_MouseDown"
+          MouseUp="ToolbarBorder_MouseUp"
+          MouseMove="ToolbarBorder_MouseMove"
           Height="52"
           CornerRadius="25,25,25,25"
           Background="#FFFFFFFF"

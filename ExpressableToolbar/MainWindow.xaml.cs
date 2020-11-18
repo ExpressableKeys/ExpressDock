@@ -25,6 +25,10 @@ namespace ExpressableToolbar
     {
         private readonly List<ExpressTool> Tools;
         private ToolbarShadow Shadow;
+
+        private bool IsDragging;
+        private Point StartPoint;
+
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
@@ -35,6 +39,8 @@ namespace ExpressableToolbar
                 GetWindowLong(mainHelper.Handle, GWL_EXSTYLE) | WS_EX_NOACTIVATE);
 
             HotKeyManager.SetupHotKeys(new WindowInteropHelper(this).Handle);
+
+            Shadow.Update(this);
         }
 
         public const int GWL_EXSTYLE = -20;
@@ -51,6 +57,8 @@ namespace ExpressableToolbar
         public MainWindow(ToolbarShadow shadow)
         {
             this.Shadow = shadow;
+            IsDragging = false;
+
             InitializeComponent();
 
             Tools = new List<ExpressTool>();
@@ -73,7 +81,6 @@ namespace ExpressableToolbar
 
             if (Tools.Count > 0)
             {
-                var margin = 10;
                 var previousControl = Tools[Tools.Count - 1].ButtonControl;
 
                 previousControl.Margin = new Thickness(5, 5, 0, 5);
@@ -85,21 +92,51 @@ namespace ExpressableToolbar
             Tools.Add(tool);
         }
 
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
-        }
-
         private void Window_LocationChanged(object sender, EventArgs e)
         {
-            Shadow.Update(this);
+            //Shadow.Update(this);
         }
 
-        private async void Window_ContentRendered(object sender, EventArgs e)
+        private void ToolbarBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            await Task.Delay(400);
-            Shadow.Update(this);
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                StartPoint = PointToScreen(Mouse.GetPosition(this));
+                IsDragging = true;
+
+                Mouse.Capture(ToolbarBorder);
+            }
+        }
+
+        private void ToolbarBorder_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (IsDragging)
+            {
+                Mouse.Capture(null);
+                IsDragging = false;
+            }
+        }
+
+        private void ToolbarBorder_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (IsDragging)
+            {
+                Point newPoint = PointToScreen(Mouse.GetPosition(this));
+
+                int diffX = (int)(newPoint.X - StartPoint.X);
+                int diffY = (int)(newPoint.Y - StartPoint.Y);
+
+                if (Math.Abs(diffX) > 1 || Math.Abs(diffY) > 1)
+                {
+                    Left += diffX;
+                    Top += diffY;
+
+                    Shadow.Left += diffX;
+                    Shadow.Top += diffY;
+
+                    StartPoint = newPoint;
+                }
+            }
         }
     }
 }
