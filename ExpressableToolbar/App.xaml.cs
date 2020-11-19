@@ -19,6 +19,10 @@ namespace ExpressableToolbar
         {
             ToolbarShadow shadow = new ToolbarShadow();
             MainWindow main = new MainWindow(shadow);
+
+            Current.MainWindow = main;
+            Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+
             shadow.Show();
             main.Show();
         }

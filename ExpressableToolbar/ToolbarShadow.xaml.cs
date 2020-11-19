@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -27,7 +28,8 @@ namespace ExpressableToolbar
         }
         public void FadeIn()
         {
-            
+            Storyboard fadeInAnimation = Resources["FadeInAnimation"] as Storyboard;
+            fadeInAnimation.Begin();
         }
         public void Update(Window parentWindow)
         {

@@ -1,0 +1,147 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0-windows7.0": {
+      "Hardcodet.NotifyIcon.Wpf.NetCore/1.0.14": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows7.0/Hardcodet.Wpf.TaskbarNotification.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Hardcodet.Wpf.TaskbarNotification.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      },
+      "WpfScreenHelper/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/WpfScreenHelper.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/WpfScreenHelper.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      }
+    }
+  },
+  "libraries": {
+    "Hardcodet.NotifyIcon.Wpf.NetCore/1.0.14": {
+      "sha512": "aNwwax4+C/xhIxTbwKHJnxh0A6hWGnqXZtppZ+/lkE8VOL+a2WuMOBgWpkiUk6Tv+pi1bc+yuHo0lh4Md6KEFw==",
+      "type": "package",
+      "path": "hardcodet.notifyicon.wpf.netcore/1.0.14",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "hardcodet.notifyicon.wpf.netcore.1.0.14.nupkg.sha512",
+        "hardcodet.notifyicon.wpf.netcore.nuspec",
+        "lib/net472/Hardcodet.Wpf.TaskbarNotification.dll",
+        "lib/net472/Hardcodet.Wpf.TaskbarNotification.xml",
+        "lib/net5.0-windows7.0/Hardcodet.Wpf.TaskbarNotification.dll",
+        "lib/net5.0-windows7.0/Hardcodet.Wpf.TaskbarNotification.xml",
+        "lib/netcoreapp3.1/Hardcodet.Wpf.TaskbarNotification.dll",
+        "lib/netcoreapp3.1/Hardcodet.Wpf.TaskbarNotification.xml"
+      ]
+    },
+    "WpfScreenHelper/1.0.0": {
+      "sha512": "OX9vitUalpiYOf1p3ZGeWAts9daluQ7PlID4ByUGcjXZALCDMZi9A6668WIXoebezV1aQx+I1k4y0k6eMCIt4Q==",
+      "type": "package",
+      "path": "wpfscreenhelper/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/WpfScreenHelper.dll",
+        "lib/netcoreapp3.0/WpfScreenHelper.dll",
+        "wpfscreenhelper.1.0.0.nupkg.sha512",
+        "wpfscreenhelper.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0-windows7.0": [
+      "Hardcodet.NotifyIcon.Wpf.NetCore >= 1.0.14",
+      "WpfScreenHelper >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\wrapp\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Projects\\Expressable\\ExpressableToolbar\\ExpressableToolbar\\ExpressableToolbar.csproj",
+      "projectName": "ExpressableToolbar",
+      "projectPath": "C:\\Projects\\Expressable\\ExpressableToolbar\\ExpressableToolbar\\ExpressableToolbar.csproj",
+      "packagesPath": "C:\\Users\\wrapp\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\Expressable\\ExpressableToolbar\\ExpressableToolbar\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\wrapp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0-windows7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0-windows7.0": {
+        "targetAlias": "net5.0-windows",
+        "dependencies": {
+          "Hardcodet.NotifyIcon.Wpf.NetCore": {
+            "target": "Package",
+            "version": "[1.0.14, )"
+          },
+          "WpfScreenHelper": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

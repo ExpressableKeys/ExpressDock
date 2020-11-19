@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "jyKxf+zwIU0Dx2/PNrDQQSLd5erZ47Vdi7zF+L2QstT6rUFk9t+DDiKJhlMLXP4oxhzLB9SfiSysEuYmMZA2CQ==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\Expressable\\ExpressableToolbar\\ExpressableToolbar\\ExpressableToolbar.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\wrapp\\.nuget\\packages\\hardcodet.notifyicon.wpf.netcore\\1.0.14\\hardcodet.notifyicon.wpf.netcore.1.0.14.nupkg.sha512",
+    "C:\\Users\\wrapp\\.nuget\\packages\\wpfscreenhelper\\1.0.0\\wpfscreenhelper.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

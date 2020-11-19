@@ -1,0 +1,71 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "ExpressableToolbar/1.0.0": {
+        "dependencies": {
+          "Hardcodet.NotifyIcon.Wpf.NetCore": "1.0.14",
+          "WpfScreenHelper": "1.0.0",
+          "Interop.Photoshop": "1.0.0.0"
+        },
+        "runtime": {
+          "ExpressableToolbar.dll": {}
+        }
+      },
+      "Hardcodet.NotifyIcon.Wpf.NetCore/1.0.14": {
+        "runtime": {
+          "lib/net5.0-windows7.0/Hardcodet.Wpf.TaskbarNotification.dll": {
+            "assemblyVersion": "1.0.14.0",
+            "fileVersion": "1.0.14.0"
+          }
+        }
+      },
+      "WpfScreenHelper/1.0.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/WpfScreenHelper.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Interop.Photoshop/1.0.0.0": {
+        "runtime": {
+          "Interop.Photoshop.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ExpressableToolbar/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Hardcodet.NotifyIcon.Wpf.NetCore/1.0.14": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aNwwax4+C/xhIxTbwKHJnxh0A6hWGnqXZtppZ+/lkE8VOL+a2WuMOBgWpkiUk6Tv+pi1bc+yuHo0lh4Md6KEFw==",
+      "path": "hardcodet.notifyicon.wpf.netcore/1.0.14",
+      "hashPath": "hardcodet.notifyicon.wpf.netcore.1.0.14.nupkg.sha512"
+    },
+    "WpfScreenHelper/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OX9vitUalpiYOf1p3ZGeWAts9daluQ7PlID4ByUGcjXZALCDMZi9A6668WIXoebezV1aQx+I1k4y0k6eMCIt4Q==",
+      "path": "wpfscreenhelper/1.0.0",
+      "hashPath": "wpfscreenhelper.1.0.0.nupkg.sha512"
+    },
+    "Interop.Photoshop/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

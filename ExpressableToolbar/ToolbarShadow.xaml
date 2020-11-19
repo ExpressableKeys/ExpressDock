@@ -9,17 +9,18 @@
         AllowsTransparency="True"
         Background="{x:Null}"
         mc:Ignorable="d"
-        Title="ToolbarShadow" Height="100" Width="100">
+        Title="ToolbarShadow" Height="0" Width="0">
   <Window.Resources>
-    <Storyboard x:Key="FadeIn"
-                x:Name="FadeIn">
+    <Storyboard x:Key="FadeInAnimation"
+                x:Name="FadeInAnimation">
       <DoubleAnimation BeginTime="0:0:0"
                        Storyboard.TargetName="ShadowBorder"
                        Storyboard.TargetProperty="Opacity"
+                       Duration="0:0:0.5"
                        From="0"
-                       To="1">
+                       To="0.7">
         <DoubleAnimation.EasingFunction>
-          <ElasticEase />
+          <PowerEase/>
         </DoubleAnimation.EasingFunction>
       </DoubleAnimation>
     </Storyboard>
@@ -28,7 +29,8 @@
           BorderBrush="Black"
           BorderThickness="10"
           CornerRadius="25"
-          Margin="27">
+          Opacity="0"
+          Margin="27,27,27,27">
         <Border.Effect>
             <BlurEffect Radius="25"/>
         </Border.Effect>
