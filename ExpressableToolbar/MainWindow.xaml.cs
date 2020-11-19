@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ExpressableToolbar.Elements;
+using ExpressableToolbar.Properties;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -23,7 +25,7 @@ namespace ExpressableToolbar
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly List<ExpressTool> Tools;
+        private readonly List<ExpressElement> Elements;
         private ToolbarShadow Shadow;
 
         private bool IsDragging;
@@ -40,7 +42,9 @@ namespace ExpressableToolbar
 
             HotKeyManager.SetupHotKeys(new WindowInteropHelper(this).Handle);
 
-            Shadow.Update(this);
+            AddElement(new ExpressBrushRadiusTool());
+            AddElement(new ExpressBrushOpacityTool());
+            AddElement(new ExpressBrushHardnessTool());
         }
 
         public const int GWL_EXSTYLE = -20;
@@ -61,13 +65,13 @@ namespace ExpressableToolbar
 
             InitializeComponent();
 
-            Tools = new List<ExpressTool>();
+            Left = Settings.Default.StartPosition.X;
+            Top = Settings.Default.StartPosition.Y;
 
-            var tool = new ExpressBrushSettingTool();
-            AddTool(tool);
+            Elements = new List<ExpressElement>();
         }
 
-        public void AddTool(ExpressTool tool)
+        public void AddElement(ExpressElement tool)
         {
             var column = new ColumnDefinition
             {
@@ -77,29 +81,24 @@ namespace ExpressableToolbar
             ToolbarGrid.ColumnDefinitions.Add(column);
             ToolbarGrid.Children.Add(tool.ButtonControl);
 
-            Grid.SetColumn(tool.ButtonControl, Tools.Count);
+            Grid.SetColumn(tool.ButtonControl, Elements.Count);
 
-            if (Tools.Count > 0)
+            if (Elements.Count > 0)
             {
-                var previousControl = Tools[Tools.Count - 1].ButtonControl;
+                var previousControl = Elements[Elements.Count - 1].ButtonControl;
 
-                previousControl.Margin = new Thickness(5, 5, 0, 5);
-                ToolbarGrid.ColumnDefinitions[Tools.Count - 1].Width = new GridLength(52 - 5);
+                previousControl.Margin = new Thickness(10, 10, 0, 10);
+                ToolbarGrid.ColumnDefinitions[Elements.Count - 1].Width = new GridLength(52 - 10);
             }
 
-            tool.ButtonControl.Margin = new Thickness(5, 5, 5, 5);
+            tool.ButtonControl.Margin = new Thickness(10, 10, 10, 10);
 
-            Tools.Add(tool);
-        }
-
-        private void Window_LocationChanged(object sender, EventArgs e)
-        {
-            //Shadow.Update(this);
+            Elements.Add(tool);
         }
 
         private void ToolbarBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
+            if (e.ChangedButton == MouseButton.Left && !Settings.Default.Pinned)
             {
                 StartPoint = PointToScreen(Mouse.GetPosition(this));
                 IsDragging = true;
@@ -114,12 +113,14 @@ namespace ExpressableToolbar
             {
                 Mouse.Capture(null);
                 IsDragging = false;
+
+                Settings.Default.StartPosition = new System.Drawing.Point((int)Left, (int)Top);
             }
         }
 
         private void ToolbarBorder_MouseMove(object sender, MouseEventArgs e)
         {
-            if (IsDragging)
+            if (IsDragging && !Settings.Default.Pinned)
             {
                 Point newPoint = PointToScreen(Mouse.GetPosition(this));
 
@@ -131,12 +132,24 @@ namespace ExpressableToolbar
                     Left += diffX;
                     Top += diffY;
 
-                    Shadow.Left += diffX;
-                    Shadow.Top += diffY;
+                    Shadow.Update(this);
 
                     StartPoint = newPoint;
                 }
             }
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            Shadow.Update(this);
+            Shadow.FadeIn();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            Settings.Default.Save();
+
+            base.OnClosed(e);
         }
     }
 }

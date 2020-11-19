@@ -1,20 +1,18 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ExpressableToolbar
 {
-	public abstract class ExpressTool
+	public abstract class ExpressTool : ExpressElement
 	{
-		public Button ButtonControl;
 		abstract public void OnMouseDown(object sender, MouseButtonEventArgs e);
 		abstract public void OnMouseUp(object sender, MouseButtonEventArgs e);
 		abstract public void OnMouseMove(object sender, MouseEventArgs e);
 
-		public ExpressTool()
+		public ExpressTool() : base()
 		{
-			ButtonControl = new Button();			
-
 			ButtonControl.PreviewMouseLeftButtonDown += OnMouseDown;
 			ButtonControl.PreviewMouseLeftButtonUp += OnMouseUp;
 			ButtonControl.PreviewMouseMove += OnMouseMove;
