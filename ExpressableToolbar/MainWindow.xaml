@@ -6,30 +6,68 @@
         xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
         xmlns:local="clr-namespace:ExpressableToolbar"
         xmlns:shell1="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        WindowStartupLocation="Manual"
         ResizeMode="NoResize"
-        LocationChanged="Window_LocationChanged"
+        ContentRendered="Window_ContentRendered"
         Topmost="True"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="53.512"
-        Width="868"
+        Width="300"
         WindowStyle="None"
         AllowsTransparency="True"
         SizeToContent="WidthAndHeight"
         Background="{x:Null}">
-  <Border x:Name="ToolbarBorder"
-          MouseDown="ToolbarBorder_MouseDown"
-          MouseUp="ToolbarBorder_MouseUp"
-          MouseMove="ToolbarBorder_MouseMove"
-          Height="52"
-          CornerRadius="25,25,25,25"
-          Background="#FFFFFFFF"
-          VerticalAlignment="Top"
-          Padding="30,0,0,0"
-          ClipToBounds="True">
-    <Grid x:Name="ToolbarGrid"
-          VerticalAlignment="Stretch"
-          ClipToBounds="False">
+    <Window.Resources>
+        <ControlTemplate x:Key="RoundButton"
+                         TargetType="Button">
+            <Grid>
+                <Ellipse Fill="#30373A">
+                    <Ellipse.Effect>
+                        <DropShadowEffect BlurRadius="13"
+                                          Opacity=".5"
+                                          ShadowDepth="3"
+                                          Direction="251" />
+                    </Ellipse.Effect>
+                </Ellipse>
+                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center" />
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="HamburgerButton"
+                         TargetType="Button">
+            <Grid Width="52"
+                  Margin="10,10,10,10">
+                <Image Source="Resources/Icons/Icon_Hamburger.png"/>
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
+    <Border x:Name="ToolbarBorder"
+            MouseDown="ToolbarBorder_MouseDown"
+            MouseUp="ToolbarBorder_MouseUp"
+            MouseMove="ToolbarBorder_MouseMove"
+            Height="52"
+            CornerRadius="25,25,25,25"
+            Background="#EDF1F4"
+            VerticalAlignment="Top"
+            Opacity="0"
+            Padding="0,0,0,0"
+            ClipToBounds="True">
+      <Border.Triggers>
+        <EventTrigger RoutedEvent="Border.Loaded">
+          <BeginStoryboard>
+            <Storyboard>
+              <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                               From="0"
+                               To="1"
+                               Duration="0:0:0.1" />
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Border.Triggers>
+        <Grid x:Name="ToolbarGrid"
+            VerticalAlignment="Stretch"
+            ClipToBounds="True">
             <Grid.ColumnDefinitions>
             </Grid.ColumnDefinitions>
         </Grid>
