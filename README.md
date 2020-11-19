@@ -1,6 +1,6 @@
-![Logo](repo/images/logo-full.png)
-![Preview](repo/images/github-preview.png)
 <div align="center">
+  <img src="https://github.com/ExpressableKeys/ExpressDock/raw/master/repo/images/logo-full.png">
+  <img src="https://github.com/ExpressableKeys/ExpressDock/raw/master/repo/images/github-preview.png">
   <h1>Express Dock</h1>
   A customizable toolbar for touch.
 </div>
