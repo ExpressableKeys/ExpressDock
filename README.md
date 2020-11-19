@@ -4,13 +4,22 @@
   A customizable toolbar for touch.
 </div>
 
-### Supported apps
+### Art focused.
+Express Dock was originally made for artists, featuring convienient access to tools in desktop art applications.
 
+- Adjust brush radius, hardness, flow, and opacity in Photoshop
+- Create custom shortcut buttons and workflows
+- Customize the look to your taste
+- ... And more?
+
+### Supported apps
 - Photoshop CC 2019 and above
+- EXPERIMENTAL: Corel Painter
+- More to come!
 
 ### Installation
 
-Visit website or download from the latest releases
+Visit website for installation or download from the latest releases
 
 ### Donations
 
