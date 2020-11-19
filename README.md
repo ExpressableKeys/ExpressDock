@@ -9,6 +9,8 @@
 ### Art focused.
 Express Dock was originally made for artists, featuring convienient access to tools in desktop art applications.
 
+Express dock is currently in heavy development. Some things may work, but most don't!
+
 - Adjust brush radius, hardness, flow, and opacity in Photoshop
 - Create custom shortcut buttons and workflows
 - Customize the look to your taste
