@@ -1,7 +1,7 @@
 ![Preview](repo/images/github-preview.png)
 <div align="center">
-# Express Dock
-A customizable toolbar for touch.
+  <h1>Express Dock</h1>
+  A customizable toolbar for touch.
 </div>
 
 ### Supported apps
