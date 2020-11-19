@@ -1,4 +1,3 @@
-C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\ExpressableToolbar.csprojAssemblyReference.cache
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\Interop.Photoshop.dll
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\ExpressableToolbar.csproj.ResolveComReference.cache
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\ToolbarShadow.baml
@@ -29,3 +28,7 @@ C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-w
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\ExpressableToolbar.dll
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\ExpressableToolbar.genruntimeconfig.cache
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\bin\Debug\net5.0-windows\Hardcodet.Wpf.TaskbarNotification.dll
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\Windows\Settings\SettingsWindow.g.cs
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\App.baml
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\Windows\Settings\SettingsWindow.baml
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\ExpressableToolbar.csprojAssemblyReference.cache

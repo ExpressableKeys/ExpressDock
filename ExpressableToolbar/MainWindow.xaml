@@ -48,7 +48,7 @@
             MouseMove="ToolbarBorder_MouseMove"
             Height="52"
             CornerRadius="25,25,25,25"
-            Background="#EDF1F4"
+            Background="{StaticResource ExpressBackground}"
             VerticalAlignment="Top"
             Opacity="0"
             Padding="0,0,0,0"

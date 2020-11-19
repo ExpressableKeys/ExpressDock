@@ -17,14 +17,18 @@ namespace ExpressableToolbar
     {
         public App()
         {
+            InitializeComponent();
+
             ToolbarShadow shadow = new ToolbarShadow();
             MainWindow main = new MainWindow(shadow);
+            SettingsWindow settings = new SettingsWindow();
 
             Current.MainWindow = main;
             Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
             shadow.Show();
             main.Show();
+            settings.Show();
         }
     }
 }

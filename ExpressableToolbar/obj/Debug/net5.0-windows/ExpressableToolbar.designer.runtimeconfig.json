@@ -7,8 +7,7 @@
     },
     "additionalProbingPaths": [
       "C:\\Users\\wrapp\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\wrapp\\.nuget\\packages",
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "C:\\Users\\wrapp\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

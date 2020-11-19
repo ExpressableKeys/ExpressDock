@@ -36,10 +36,10 @@ namespace Expressable
 
         static public double GetBrushDiameter()
         {
-            /*if(!IsActive())
+            if(!IsActive())
             {
                 return -1;
-            }*/
+            }
 
             try
             {
@@ -87,10 +87,10 @@ namespace Expressable
 
         static public void SetBrushDiameter(double size)
         {
-            /*if(!IsActive())
+            if(!IsActive())
             {
                 return;
-            }*/
+            }
 
             // Retry again incase photoshop instance dies
             for (int i = 0; i < 1; i++)

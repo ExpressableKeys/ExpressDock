@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ExpressableToolbar">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="ExpressBackground" Color="#EDF1F4"/>
+        <Style x:Key="ExpressWindow" TargetType="Window">
+            <Setter Property="Background" Value="{StaticResource ExpressBackground}"/>
+        </Style>
     </Application.Resources>
 </Application>
