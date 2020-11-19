@@ -1,3 +1,4 @@
+![Logo](repo/images/logo-full.png)
 ![Preview](repo/images/github-preview.png)
 <div align="center">
   <h1>Express Dock</h1>
