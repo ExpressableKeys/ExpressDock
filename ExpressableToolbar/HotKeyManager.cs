@@ -40,7 +40,7 @@ namespace ExpressableToolbar
             Source = HwndSource.FromHwnd(Hwnd);
             Source.AddHook(HwndHook);
 
-            RegisterHotKey(Hwnd, HOTKEY_ID, MOD_CONTROL, VK_A); //CTRL + CAPS_LOCK
+            //RegisterHotKey(Hwnd, HOTKEY_ID, MOD_CONTROL, VK_A); //CTRL + CAPS_LOCK
         }
         
         static public void ClearHotKeys()
