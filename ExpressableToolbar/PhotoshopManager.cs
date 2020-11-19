@@ -7,6 +7,11 @@ using Photoshop;
 
 namespace Expressable
 {
+    enum PhotoshopExceptionResult : int
+    {
+        NOTAVAIL = -2147212704,
+        RPCERR = -2147023174,
+    }
     class PhotoshopManager
     {
         static private Photoshop.Application App;
@@ -15,7 +20,6 @@ namespace Expressable
         {
             if (Process.GetProcessesByName("Photoshop").Length > 0)
             {
-                Trace.WriteLine("How???");
                 App = new Photoshop.Application();
             }
             else
@@ -32,29 +36,50 @@ namespace Expressable
 
         static public double GetBrushDiameter()
         {
-            if(!IsActive())
+            /*if(!IsActive())
             {
                 return -1;
-            }
+            }*/
 
             try
             {
                 var ref1 = new ActionReference();
 
-                ref1.PutEnumerated(App.CharIDToTypeID("capp"), App.CharIDToTypeID("Ordn"), App.CharIDToTypeID("Trgt"));
+                ref1.PutEnumerated(App.StringIDToTypeID("application"), App.StringIDToTypeID("ordinal"), App.StringIDToTypeID("targetEnum"));
 
-                var currentBrush = App.ExecuteActionGet(ref1)
-                    .GetObjectValue(App.StringIDToTypeID("currentToolOptions"))
-                    .GetObjectValue(App.CharIDToTypeID("Brsh"));
+                var capp = App.ExecuteActionGet(ref1);
+                var currentToolOptions = capp.GetObjectValue(App.StringIDToTypeID("currentToolOptions"));
+                var currentBrush = currentToolOptions.GetObjectValue(App.StringIDToTypeID("brush"));
 
-                return currentBrush.GetDouble(App.CharIDToTypeID("Dmtr"));
+                if (currentBrush.HasKey(App.StringIDToTypeID("hardness")))
+                    Trace.WriteLine(currentBrush.GetDouble(App.StringIDToTypeID("hardness")));
+
+                if (currentToolOptions.HasKey(App.StringIDToTypeID("flow")))
+                    Trace.WriteLine(currentToolOptions.GetInteger(App.StringIDToTypeID("flow")));
+
+                if (currentToolOptions.HasKey(App.StringIDToTypeID("opacity")))
+                    Trace.WriteLine(currentToolOptions.GetInteger(App.StringIDToTypeID("opacity")));
+
+                if (currentToolOptions.HasKey(App.StringIDToTypeID("smoothing")))
+                    Trace.WriteLine(currentToolOptions.GetInteger(App.StringIDToTypeID("smoothing")));
+
+                //return currentBrush.GetDouble(App.CharIDToTypeID("Dmtr"));
             }
             catch (COMException ex)
             {
-                Console.WriteLine("Photoshop instance is no longer running.");
-                Console.WriteLine(ex.Message);
+                switch ((PhotoshopExceptionResult)ex.ErrorCode)
+                {
+                    case PhotoshopExceptionResult.RPCERR:
+                        Trace.WriteLine("Photoshop handle is outdated.");
+                        Trace.WriteLine(ex.ErrorCode);
+                        Trace.WriteLine(ex.Message);
 
-                App = null;
+                        break;
+
+                    case PhotoshopExceptionResult.NOTAVAIL:
+                        Trace.WriteLine("Tool does not have brush settings.");
+                        break;
+                }
             }
 
             return -1;
@@ -62,10 +87,10 @@ namespace Expressable
 
         static public void SetBrushDiameter(double size)
         {
-            if(!IsActive())
+            /*if(!IsActive())
             {
                 return;
-            }
+            }*/
 
             // Retry again incase photoshop instance dies
             for (int i = 0; i < 1; i++)
@@ -81,24 +106,29 @@ namespace Expressable
                     var desc2 = new ActionDescriptor();
 
                     desc2.PutUnitDouble(App.StringIDToTypeID("masterDiameter"), App.CharIDToTypeID("#Pxl"), size);
+                    desc2.PutDouble(App.StringIDToTypeID("hardness"), 100);
+
                     desc1.PutObject(App.CharIDToTypeID("T   "), App.CharIDToTypeID("Brsh"), desc2);
 
-                    App.ExecuteAction(App.CharIDToTypeID("setd"), desc1);
+                    App.ExecuteAction(App.CharIDToTypeID("setd"), desc1, PsDialogModes.psDisplayNoDialogs);
 
                     return;
                 }
                 catch (COMException ex)
                 {
-                    Console.WriteLine("Photoshop handle is outdated.");
-                    Console.WriteLine(ex.Message);
+                    switch ((PhotoshopExceptionResult)ex.ErrorCode)
+                    {
+                        case PhotoshopExceptionResult.RPCERR:
+                            Trace.WriteLine("Photoshop handle is outdated.");
+                            Trace.WriteLine(ex.ErrorCode);
+                            Trace.WriteLine(ex.Message);
 
-                    App = null;
+                            break;
 
-                    Initialize();
-
-                    // If Photoshop does not exist anymore, we cannot continue.
-                    if (App == null)
-                        return;
+                        case PhotoshopExceptionResult.NOTAVAIL:
+                            Trace.WriteLine("Tool does not have brush settings.");
+                            break;
+                    }
                 }
             }
         }
