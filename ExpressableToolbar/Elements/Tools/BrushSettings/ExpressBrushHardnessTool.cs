@@ -23,14 +23,14 @@ namespace ExpressableToolbar
 			base.OnMouseDown(sender, e);
 
 			// PhotoshopManager.Initialize();
-			// CurrentBrushSize = PhotoshopManager.GetBrushDiameter();
+			CurrentBrushValue = PhotoshopManager.GetBrushSettings().Hardness;
 		}
 
 		public override void OnMouseUp(object sender, MouseButtonEventArgs e)
 		{
 			base.OnMouseUp(sender, e);
 
-			// PhotoshopManager.SetBrushDiameter(CurrentBrushValue);
+			PhotoshopManager.SetBrushHardness(GetBrushSettingValue());
 		}
 
 		public override void OnOverlayUpdate()

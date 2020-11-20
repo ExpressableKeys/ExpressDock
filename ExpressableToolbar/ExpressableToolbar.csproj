@@ -5,6 +5,8 @@
     <UseWPF>true</UseWPF>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <StartupObject></StartupObject>
+    <ApplicationIcon>Resources\Icons\Icon_Logo.ico</ApplicationIcon>
+    <PackageProjectUrl>https://github.com/ExpressableKeys/ExpressDock/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

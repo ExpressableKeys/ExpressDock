@@ -12,6 +12,16 @@ namespace Expressable
         NOTAVAIL = -2147212704,
         RPCERR = -2147023174,
     }
+
+    public class PhotoshopBrush
+    {
+        public double Diameter = -1;
+        public double Hardness = -1;
+
+        public int Flow = -1;
+        public int Opacity = -1;
+    }
+
     class PhotoshopManager
     {
         static private Photoshop.Application App;
@@ -34,11 +44,21 @@ namespace Expressable
             return App != null;
         }
 
-        static public double GetBrushDiameter()
+        static public double GetZoom()
+        {
+            var ref1 = new ActionReference();
+
+            ref1.PutProperty(App.StringIDToTypeID("property"), App.StringIDToTypeID("zoom"));
+            ref1.PutEnumerated(App.StringIDToTypeID("document"), App.StringIDToTypeID("ordinal"), App.StringIDToTypeID("targetEnum"));
+
+            return App.ExecuteActionGet(ref1).GetDouble(App.StringIDToTypeID("zoom"));
+        }
+
+        static public PhotoshopBrush GetBrushSettings()
         {
             if(!IsActive())
             {
-                return -1;
+                return null;
             }
 
             try
@@ -48,22 +68,25 @@ namespace Expressable
                 ref1.PutEnumerated(App.StringIDToTypeID("application"), App.StringIDToTypeID("ordinal"), App.StringIDToTypeID("targetEnum"));
 
                 var capp = App.ExecuteActionGet(ref1);
+
                 var currentToolOptions = capp.GetObjectValue(App.StringIDToTypeID("currentToolOptions"));
                 var currentBrush = currentToolOptions.GetObjectValue(App.StringIDToTypeID("brush"));
 
+                var brushData = new PhotoshopBrush();
+
+                if (currentBrush.HasKey(App.StringIDToTypeID("diameter")))
+                    brushData.Diameter = currentBrush.GetDouble(App.StringIDToTypeID("diameter"));
+
                 if (currentBrush.HasKey(App.StringIDToTypeID("hardness")))
-                    Trace.WriteLine(currentBrush.GetDouble(App.StringIDToTypeID("hardness")));
+                    brushData.Hardness = currentBrush.GetDouble(App.StringIDToTypeID("hardness"));
 
                 if (currentToolOptions.HasKey(App.StringIDToTypeID("flow")))
-                    Trace.WriteLine(currentToolOptions.GetInteger(App.StringIDToTypeID("flow")));
+                    brushData.Flow = currentToolOptions.GetInteger(App.StringIDToTypeID("flow"));
 
                 if (currentToolOptions.HasKey(App.StringIDToTypeID("opacity")))
-                    Trace.WriteLine(currentToolOptions.GetInteger(App.StringIDToTypeID("opacity")));
+                    brushData.Opacity = currentToolOptions.GetInteger(App.StringIDToTypeID("opacity"));
 
-                if (currentToolOptions.HasKey(App.StringIDToTypeID("smoothing")))
-                    Trace.WriteLine(currentToolOptions.GetInteger(App.StringIDToTypeID("smoothing")));
-
-                //return currentBrush.GetDouble(App.CharIDToTypeID("Dmtr"));
+                return brushData;
             }
             catch (COMException ex)
             {
@@ -82,35 +105,77 @@ namespace Expressable
                 }
             }
 
-            return -1;
+            return null;
+        }
+        static public void SetBrushDiameter(double diameter)
+        {
+            SetBrushSettings(diameter, -1, -1, -1);
+        }
+        static public void SetBrushHardness(double hardness)
+        {
+            SetBrushSettings(-1, hardness, -1, -1);
         }
 
-        static public void SetBrushDiameter(double size)
+        static public void SetBrushFlow(int flow)
+        {
+            SetBrushSettings(-1, -1, flow, -1);
+        }
+
+        static public void SetBrushOpacity(int opacity)
+        {
+            SetBrushSettings(-1, -1, -1, opacity);
+        }
+
+        static public void SetBrushSettings(PhotoshopBrush brush)
+        {
+            SetBrushSettings(brush.Diameter, brush.Hardness, brush.Flow, brush.Opacity);
+        }
+
+        static public void SetBrushSettings(double diameter, double hardness, int flow, int opacity)
         {
             if(!IsActive())
             {
                 return;
             }
 
-            // Retry again incase photoshop instance dies
             for (int i = 0; i < 1; i++)
             {
                 try
                 {
-                    var desc1 = new ActionDescriptor();
                     var ref1 = new ActionReference();
+                    ref1.PutProperty(App.StringIDToTypeID("property"), App.StringIDToTypeID("tool"));
+                    ref1.PutEnumerated(App.StringIDToTypeID("application"), App.StringIDToTypeID("ordinal"), App.StringIDToTypeID("targetEnum"));
 
-                    ref1.PutEnumerated(App.CharIDToTypeID("Brsh"), App.CharIDToTypeID("Ordn"), App.CharIDToTypeID("Trgt"));
-                    desc1.PutReference(App.CharIDToTypeID("null"), ref1);
+                    var capp = App.ExecuteActionGet(ref1);
 
-                    var desc2 = new ActionDescriptor();
+                    var currentToolOptions = capp.GetObjectValue(App.StringIDToTypeID("currentToolOptions"));
+                    Trace.WriteLine("");
+                    var currentTool = capp.GetEnumerationType(App.StringIDToTypeID("tool"));
+                    Trace.WriteLine("");
+                    var currentBrush = currentToolOptions.GetObjectValue(App.StringIDToTypeID("brush"));
 
-                    desc2.PutUnitDouble(App.StringIDToTypeID("masterDiameter"), App.CharIDToTypeID("#Pxl"), size);
-                    desc2.PutDouble(App.StringIDToTypeID("hardness"), 100);
+                    var toolRef = new ActionReference();
+                    toolRef.PutClass(currentTool);
 
-                    desc1.PutObject(App.CharIDToTypeID("T   "), App.CharIDToTypeID("Brsh"), desc2);
+                    if (currentBrush.HasKey(App.StringIDToTypeID("diameter")) && diameter != -1)
+                        currentBrush.PutDouble(App.StringIDToTypeID("diameter"), diameter);
 
-                    App.ExecuteAction(App.CharIDToTypeID("setd"), desc1, PsDialogModes.psDisplayNoDialogs);
+                    if (currentBrush.HasKey(App.StringIDToTypeID("hardness")) && hardness != -1)
+                        currentBrush.PutDouble(App.StringIDToTypeID("hardness"), hardness);
+
+                    if (currentToolOptions.HasKey(App.StringIDToTypeID("flow")) && flow != -1)
+                        currentToolOptions.PutInteger(App.StringIDToTypeID("flow"), flow);
+
+                    if (currentToolOptions.HasKey(App.StringIDToTypeID("opacity")) && opacity != -1)
+                        currentToolOptions.PutInteger(App.StringIDToTypeID("opacity"), opacity);
+
+                    currentToolOptions.PutObject(App.StringIDToTypeID("brush"), App.StringIDToTypeID("null"), currentBrush);
+
+                    var setBrush = new ActionDescriptor(); 
+                    setBrush.PutReference(App.StringIDToTypeID("null"), toolRef);
+                    setBrush.PutObject(App.StringIDToTypeID("to"), App.StringIDToTypeID("null"), currentToolOptions);
+
+                    App.ExecuteAction(App.StringIDToTypeID("set"), setBrush, PsDialogModes.psDisplayNoDialogs);
 
                     return;
                 }

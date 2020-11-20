@@ -17,20 +17,21 @@ namespace ExpressableToolbar
 {
 	public class ExpressBrushRadiusTool : ExpressBrushSettingToolBase
 	{
+		private double CurrentZoom;
 		public override void OnMouseDown(object sender, MouseButtonEventArgs e)
 		{
-			base.OnMouseDown(sender, e);
-
 			// PhotoshopManager.Initialize();
-			// CurrentBrushSize = PhotoshopManager.GetBrushDiameter();
+			CurrentBrushValue = PhotoshopManager.GetBrushSettings().Diameter * CurrentZoom;
+			CurrentZoom = PhotoshopManager.GetZoom();
+
+			base.OnMouseDown(sender, e);
 		}
 
 		public override void OnMouseUp(object sender, MouseButtonEventArgs e)
 		{
 			base.OnMouseUp(sender, e);
 
-			PhotoshopManager.SetBrushDiameter(CurrentBrushValue);
-			PhotoshopManager.GetBrushDiameter();
+			PhotoshopManager.SetBrushDiameter(CurrentBrushValue / CurrentZoom);
 		}
 
 		public override void OnOverlayUpdate()
