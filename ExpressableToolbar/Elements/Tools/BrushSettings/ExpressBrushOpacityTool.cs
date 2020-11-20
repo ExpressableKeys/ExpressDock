@@ -19,23 +19,23 @@ namespace ExpressableToolbar
 	{
 		public override void OnMouseDown(object sender, MouseButtonEventArgs e)
 		{
-			base.OnMouseDown(sender, e);
-
 			// PhotoshopManager.Initialize();
-			CurrentBrushValue = PhotoshopManager.GetBrushSettings().Opacity / 100;
+			CurrentBrushValue = PhotoshopManager.GetBrushSettings().Opacity;
+			Trace.WriteLine("Yes? " + CurrentBrushValue);
+			base.OnMouseDown(sender, e);
 		}
 
 		public override void OnMouseUp(object sender, MouseButtonEventArgs e)
 		{
 			base.OnMouseUp(sender, e);
 
-			PhotoshopManager.SetBrushOpacity(Math.Clamp((int)((GetBrushSettingValue() / 300) * 100), 0, 100));
+			PhotoshopManager.SetBrushOpacity(Math.Clamp(GetBrushSettingValue(), 1, 100));
 		}
 
 		public override void OnOverlayUpdate()
 		{
 			var brushRadiusBorder = BrushPopup.Child as Border;
-			brushRadiusBorder.Opacity = GetBrushSettingValue() / 300;
+			brushRadiusBorder.Opacity = Math.Clamp(GetBrushSettingValue(), 1, 100) / 100;
 		}
 
 		public ExpressBrushOpacityTool() : base()

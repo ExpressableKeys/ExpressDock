@@ -36,7 +36,7 @@ namespace ExpressableToolbar
 		public override void OnOverlayUpdate()
 		{
 			var brushRadiusBorder = BrushPopup.Child as Border;
-			var actualValue = Math.Clamp(GetBrushSettingValue(), 0, brushRadiusBorder.Width / 2);
+			var actualValue = 100 - Math.Clamp(GetBrushSettingValue(), 0, brushRadiusBorder.Width / 2);
 
 			brushRadiusBorder.Effect.SetValue(BlurEffect.RadiusProperty, actualValue);
 

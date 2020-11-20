@@ -65,6 +65,13 @@ namespace ExpressableToolbar
 
             InitializeComponent();
 
+            if (Settings.Default.StartPosition.X == 0 && Settings.Default.StartPosition.Y == 0)
+            {
+                Settings.Default.StartPosition = new System.Drawing.Point(
+                    (int)System.Windows.SystemParameters.PrimaryScreenWidth / 2,
+                    (int)System.Windows.SystemParameters.PrimaryScreenHeight - 110);
+            }
+
             Left = Settings.Default.StartPosition.X;
             Top = Settings.Default.StartPosition.Y;
 

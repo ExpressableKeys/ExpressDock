@@ -31,4 +31,3 @@ C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\bin\Debug\net5.0-w
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\Windows\Settings\SettingsWindow.g.cs
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\App.baml
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\Windows\Settings\SettingsWindow.baml
-C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Debug\net5.0-windows\ExpressableToolbar.csprojAssemblyReference.cache

@@ -68,8 +68,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\wrapp\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\wrapp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -80,9 +79,6 @@
       "packagesPath": "C:\\Users\\wrapp\\.nuget\\packages\\",
       "outputPath": "C:\\Projects\\Expressable\\ExpressableToolbar\\ExpressableToolbar\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\wrapp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
