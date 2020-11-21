@@ -9,8 +9,8 @@ namespace Expressable
 {
     enum PhotoshopExceptionResult : int
     {
-        NOTAVAIL = -2147212704,
-        RPCERR = -2147023174,
+        NOTAVAILABLE = -2147212704,
+        RPCERROR = -2147023174,
     }
 
     public class PhotoshopBrush
@@ -18,7 +18,7 @@ namespace Expressable
         public double Diameter = -1;
         public double Hardness = -1;
 
-        public int Flow = -1;
+        public double Flow = -1;
         public double Opacity = -1;
     }
 
@@ -32,14 +32,21 @@ namespace Expressable
         {
             if (Process.GetProcessesByName("Photoshop").Length > 0)
             {
+                // Many of these are fairly slow operations. (Thank you, Photoshop!)
+                // We will do them once to try and speed things up.
+
+                // Create COM object.
                 App = new Photoshop.Application();
 
+                // Get an action reference to the photoshop application
                 var refApp = new ActionReference();
+
                 refApp.PutProperty(App.StringIDToTypeID("property"), App.StringIDToTypeID("tool"));
                 refApp.PutEnumerated(App.StringIDToTypeID("application"), App.StringIDToTypeID("ordinal"), App.StringIDToTypeID("targetEnum"));
 
                 AppDescriptor = App.ExecuteActionGet(refApp);
 
+                // Get an action reference to the document.
                 var refDoc = new ActionReference();
 
                 refDoc.PutProperty(App.StringIDToTypeID("property"), App.StringIDToTypeID("zoom"));
@@ -73,11 +80,13 @@ namespace Expressable
 
             try
             {
+                // Create action descriptors for the current tool options and current brush
                 var currentToolOptions = AppDescriptor.GetObjectValue(App.StringIDToTypeID("currentToolOptions"));
                 var currentBrush = currentToolOptions.GetObjectValue(App.StringIDToTypeID("brush"));
 
                 var brushData = new PhotoshopBrush();
 
+                // Grab brush values if they exist
                 if (currentBrush.HasKey(App.StringIDToTypeID("diameter")))
                     brushData.Diameter = currentBrush.GetDouble(App.StringIDToTypeID("diameter"));
 
@@ -85,12 +94,10 @@ namespace Expressable
                     brushData.Hardness = currentBrush.GetDouble(App.StringIDToTypeID("hardness"));
 
                 if (currentToolOptions.HasKey(App.StringIDToTypeID("flow")))
-                    brushData.Flow = currentToolOptions.GetInteger(App.StringIDToTypeID("flow"));
+                    brushData.Flow = currentToolOptions.GetDouble(App.StringIDToTypeID("flow"));
 
                 if (currentToolOptions.HasKey(App.StringIDToTypeID("opacity")))
                     brushData.Opacity = currentToolOptions.GetDouble(App.StringIDToTypeID("opacity"));
-
-                Trace.WriteLine(brushData.Opacity);
 
                 return brushData;
             }
@@ -98,14 +105,14 @@ namespace Expressable
             {
                 switch ((PhotoshopExceptionResult)ex.ErrorCode)
                 {
-                    case PhotoshopExceptionResult.RPCERR:
+                    case PhotoshopExceptionResult.RPCERROR:
                         Trace.WriteLine("Photoshop handle is outdated.");
                         Trace.WriteLine(ex.ErrorCode);
                         Trace.WriteLine(ex.Message);
 
                         break;
 
-                    case PhotoshopExceptionResult.NOTAVAIL:
+                    case PhotoshopExceptionResult.NOTAVAILABLE:
                         Trace.WriteLine("Tool does not have brush settings.");
                         break;
                 }
@@ -122,7 +129,7 @@ namespace Expressable
             SetBrushSettings(-1, hardness, -1, -1);
         }
 
-        static public void SetBrushFlow(int flow)
+        static public void SetBrushFlow(double flow)
         {
             SetBrushSettings(-1, -1, flow, -1);
         }
@@ -137,7 +144,7 @@ namespace Expressable
             SetBrushSettings(brush.Diameter, brush.Hardness, brush.Flow, brush.Opacity);
         }
 
-        static public void SetBrushSettings(double diameter, double hardness, int flow, double opacity)
+        static public void SetBrushSettings(double diameter, double hardness, double flow, double opacity)
         {
             if(!IsActive())
             {
@@ -148,13 +155,17 @@ namespace Expressable
             {
                 try
                 {
+                    // Get action desctiptors for the tool options, the current tool and the brush attributes.
                     var currentToolOptions = AppDescriptor.GetObjectValue(App.StringIDToTypeID("currentToolOptions"));
                     var currentTool = AppDescriptor.GetEnumerationType(App.StringIDToTypeID("tool"));
                     var currentBrush = currentToolOptions.GetObjectValue(App.StringIDToTypeID("brush"));
 
+                    // Get an action reference to the current tool
+                    // so we can set the tool's settings.
                     var toolRef = new ActionReference();
                     toolRef.PutClass(currentTool);
 
+                    // Set brush settings
                     if (currentBrush.HasKey(App.StringIDToTypeID("diameter")) && diameter != -1)
                         currentBrush.PutDouble(App.StringIDToTypeID("diameter"), diameter);
 
@@ -162,7 +173,7 @@ namespace Expressable
                         currentBrush.PutDouble(App.StringIDToTypeID("hardness"), hardness);
 
                     if (currentToolOptions.HasKey(App.StringIDToTypeID("flow")) && flow != -1)
-                        currentToolOptions.PutInteger(App.StringIDToTypeID("flow"), flow);
+                        currentToolOptions.PutDouble(App.StringIDToTypeID("flow"), flow);
 
                     if (currentToolOptions.HasKey(App.StringIDToTypeID("opacity")) && opacity != -1)
                         currentToolOptions.PutDouble(App.StringIDToTypeID("opacity"), opacity);
@@ -181,14 +192,14 @@ namespace Expressable
                 {
                     switch ((PhotoshopExceptionResult)ex.ErrorCode)
                     {
-                        case PhotoshopExceptionResult.RPCERR:
+                        case PhotoshopExceptionResult.RPCERROR:
                             Trace.WriteLine("Photoshop handle is outdated.");
                             Trace.WriteLine(ex.ErrorCode);
                             Trace.WriteLine(ex.Message);
 
                             break;
 
-                        case PhotoshopExceptionResult.NOTAVAIL:
+                        case PhotoshopExceptionResult.NOTAVAILABLE:
                             Trace.WriteLine("Tool does not have brush settings.");
                             break;
                     }

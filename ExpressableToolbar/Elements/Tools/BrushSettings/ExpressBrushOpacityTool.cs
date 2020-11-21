@@ -19,9 +19,11 @@ namespace ExpressableToolbar
 	{
 		public override void OnMouseDown(object sender, MouseButtonEventArgs e)
 		{
-			// PhotoshopManager.Initialize();
-			CurrentBrushValue = PhotoshopManager.GetBrushSettings().Opacity;
-			Trace.WriteLine("Yes? " + CurrentBrushValue);
+			CurrentValue = PhotoshopManager.GetBrushSettings().Opacity;
+
+			if (CurrentValue == -1)
+				return;
+
 			base.OnMouseDown(sender, e);
 		}
 
@@ -34,14 +36,11 @@ namespace ExpressableToolbar
 
 		public override void OnOverlayUpdate()
 		{
-			var brushRadiusBorder = BrushPopup.Child as Border;
-			brushRadiusBorder.Opacity = Math.Clamp(GetBrushSettingValue(), 1, 100) / 100;
+			BrushBorder.Opacity = Math.Clamp(GetBrushSettingValue(), 1, 100) / 100;
 		}
 
 		public ExpressBrushOpacityTool() : base()
 		{
-			//PhotoshopManager.Initialize();
-
 			// Set icon
 			var uriSource = new Uri("Resources/Icons/Icon_Brush_Opacity.png", UriKind.Relative);
 
@@ -54,10 +53,10 @@ namespace ExpressableToolbar
 
 			ButtonControl.Content = image;
 
-			((Border)BrushPopup.Child).Width = 200;
-			((Border)BrushPopup.Child).Height = 200;
+			BrushBorder.Width = 200;
+			BrushBorder.Height = 200;
 
-			((Border)BrushPopup.Child).CornerRadius = new CornerRadius(((Border)BrushPopup.Child).Width / 2);
+			BrushBorder.CornerRadius = new CornerRadius(BrushBorder.Width / 2);
 		}
 	}
 }

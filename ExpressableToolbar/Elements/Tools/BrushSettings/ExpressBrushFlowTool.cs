@@ -15,19 +15,14 @@ using Point = System.Windows.Point;
 
 namespace ExpressableToolbar
 {
-	public class ExpressBrushRadiusTool : ExpressBrushSettingToolBase
+	public class ExpressBrushFlowTool : ExpressBrushSettingToolBase
 	{
-		private double CurrentZoom;
-
 		public override void OnMouseDown(object sender, MouseButtonEventArgs e)
 		{
-			CurrentValue = PhotoshopManager.GetBrushSettings().Diameter;
+			CurrentValue = PhotoshopManager.GetBrushSettings().Flow;
 
 			if (CurrentValue == -1)
 				return;
-
-			CurrentZoom = PhotoshopManager.GetZoom();
-			CurrentValue *= CurrentZoom;
 
 			base.OnMouseDown(sender, e);
 		}
@@ -36,21 +31,18 @@ namespace ExpressableToolbar
 		{
 			base.OnMouseUp(sender, e);
 
-			PhotoshopManager.SetBrushDiameter(CurrentValue / CurrentZoom);
+			PhotoshopManager.SetBrushFlow(Math.Clamp(GetBrushSettingValue(), 1, 100));
 		}
 
 		public override void OnOverlayUpdate()
 		{
-			BrushBorder.Width = GetBrushSettingValue();
-			BrushBorder.Height = BrushBorder.Width;
-
-			BrushBorder.CornerRadius = new CornerRadius(BrushBorder.Width / 2);
+			BrushBorder.Opacity = Math.Clamp(GetBrushSettingValue(), 1, 100) / 100;
 		}
 
-		public ExpressBrushRadiusTool() : base()
+		public ExpressBrushFlowTool() : base()
 		{
 			// Set icon
-			var uriSource = new Uri("Resources/Icons/Icon_Brush_Radius.png", UriKind.Relative);
+			var uriSource = new Uri("Resources/Icons/Icon_Brush_Flow.png", UriKind.Relative);
 
 			var image = new Image
 			{
@@ -60,6 +52,11 @@ namespace ExpressableToolbar
 			};
 
 			ButtonControl.Content = image;
+
+			BrushBorder.Width = 200;
+			BrushBorder.Height = 200;
+
+			BrushBorder.CornerRadius = new CornerRadius(BrushBorder.Width / 2);
 		}
 	}
 }

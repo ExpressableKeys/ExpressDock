@@ -20,10 +20,12 @@ namespace ExpressableToolbar
 	{
 		public override void OnMouseDown(object sender, MouseButtonEventArgs e)
 		{
-			base.OnMouseDown(sender, e);
+			CurrentValue = PhotoshopManager.GetBrushSettings().Hardness;
 
-			// PhotoshopManager.Initialize();
-			CurrentBrushValue = PhotoshopManager.GetBrushSettings().Hardness;
+			if (CurrentValue == -1)
+				return;
+
+			base.OnMouseDown(sender, e);
 		}
 
 		public override void OnMouseUp(object sender, MouseButtonEventArgs e)
@@ -35,18 +37,21 @@ namespace ExpressableToolbar
 
 		public override void OnOverlayUpdate()
 		{
-			var brushRadiusBorder = BrushPopup.Child as Border;
-			var actualValue = 100 - Math.Clamp(GetBrushSettingValue(), 0, brushRadiusBorder.Width / 2);
+			var value = 100 - GetBrushSettingValue();
 
-			brushRadiusBorder.Effect.SetValue(BlurEffect.RadiusProperty, actualValue);
+			BrushBorder.Effect.SetValue(BlurEffect.RadiusProperty, value);
 
-			brushRadiusBorder.Width = 200 - actualValue;
-			brushRadiusBorder.Height = 200 - actualValue;
+			BrushBorder.Width = 200 - (value / 2);
+			BrushBorder.Height = 200 - (value / 2);
+
+			BrushText.Text = GetBrushSettingValue().ToString();
 		}
 
 		public ExpressBrushHardnessTool() : base()
 		{
-			//PhotoshopManager.Initialize();
+			// Set brush value settings
+			MinimumValue = 1;
+			MaximumValue = 100;
 
 			// Set icon
 			var uriSource = new Uri("Resources/Icons/Icon_Brush_Hardness.png", UriKind.Relative);
@@ -60,14 +65,13 @@ namespace ExpressableToolbar
 
 			ButtonControl.Content = image;
 
-			((Border)BrushPopup.Child).Width = 200;
-			((Border)BrushPopup.Child).Height = 200;
+			BrushBorder.Width = 200;
+			BrushBorder.Height = 200;
 
-			((Border)BrushPopup.Child).Margin = new Thickness(40);
+			BrushBorder.Margin = new Thickness(100);
+			BrushBorder.CornerRadius = new CornerRadius(BrushBorder.Width / 2);
 
-			BrushPopup.Child.Effect = new BlurEffect();
-
-			((Border)BrushPopup.Child).CornerRadius = new CornerRadius(((Border)BrushPopup.Child).Width / 2);
+			BrushBorder.Effect = new BlurEffect();
 		}
 	}
 }

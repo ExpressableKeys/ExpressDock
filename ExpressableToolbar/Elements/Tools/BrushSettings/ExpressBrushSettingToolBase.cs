@@ -1,4 +1,5 @@
 ﻿using Expressable;
+using ExpressableToolbar.Properties;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -18,14 +19,18 @@ namespace ExpressableToolbar
 	public abstract class ExpressBrushSettingToolBase : ExpressTool
 	{
 		protected readonly Popup BrushPopup;
+		protected readonly Border BrushBorder;
+		protected readonly TextBlock BrushText;
+
 		protected Point InitMousePosition;
 		protected double MouseDelta;
-		protected double CurrentBrushValue = 0;
+
+		protected double CurrentValue = 0;
+
+		protected double MaximumValue = 5000;
+		protected double MinimumValue = 1;
 
 		protected Point ScreenCenter;
-
-		// TODO: Pull this out to a setting instead
-		private bool UseDeltaResize = true;
 
 		public override void OnMouseDown(object sender, MouseButtonEventArgs e)
 		{
@@ -58,7 +63,7 @@ namespace ExpressableToolbar
 			Mouse.Capture(null);
 			BrushPopup.IsOpen = false;
 
-			CurrentBrushValue = GetBrushSettingValue();
+			CurrentValue = GetBrushSettingValue();
 		}
 
 		public override void OnMouseMove(object sender, MouseEventArgs e)
@@ -76,25 +81,30 @@ namespace ExpressableToolbar
 		{
 			var currMousePosition = e.GetPosition(Application.Current.MainWindow);
 
-			if (UseDeltaResize)
+			if (Settings.Default.UseDelta)
 			{
-				MouseDelta = (currMousePosition - InitMousePosition).X * 2;
+				MouseDelta = (currMousePosition - InitMousePosition).X * 2 * Settings.Default.MouseSensitivity;
 			}
 			else
 			{
-				MouseDelta = (currMousePosition - ScreenCenter).X * 2;
+				MouseDelta = (currMousePosition - ScreenCenter).X * 2 * Settings.Default.MouseSensitivity;
 			}
 		}
 
 		public double GetBrushSettingValue()
 		{
-			if (UseDeltaResize)
+			double value;
+
+			if (Settings.Default.UseDelta)
 			{
-				return Math.Max(CurrentBrushValue + MouseDelta, 0);
-				
+				value = CurrentValue + MouseDelta;
+			}
+			else
+			{
+				value = MouseDelta;
 			}
 
-			return Math.Max(MouseDelta, 0);
+			return Math.Clamp(value, MinimumValue, MaximumValue);
 		}
 
 		public ExpressBrushSettingToolBase() : base()
@@ -108,7 +118,7 @@ namespace ExpressableToolbar
 				Placement = PlacementMode.Center
 			};
 
-			var border = new Border
+			BrushBorder = new Border
 			{
 				Background = Brushes.Red,
 				VerticalAlignment = VerticalAlignment.Center,
@@ -116,7 +126,18 @@ namespace ExpressableToolbar
 				Margin = new Thickness(20)
 			};
 
-			BrushPopup.Child = border;
+            BrushText = new TextBlock
+            {
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+
+            var grid = new Grid();
+
+			grid.Children.Add(BrushBorder);
+			grid.Children.Add(BrushText);
+
+			BrushPopup.Child = grid;
 
 			ButtonControl.Template = (ControlTemplate)Application.Current.MainWindow.Resources["RoundButton"];
 		}
