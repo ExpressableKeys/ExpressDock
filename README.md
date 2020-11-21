@@ -6,7 +6,7 @@
   A customizable toolbar for touch.
 </div>
 <br><br>
-## Express dock is currently in heavy development. Some things may work, but most don't!
+<b>Express dock is currently in heavy development. Some things may work, but most don't!</b>
 <br><br>
 
 ### Art focused.
