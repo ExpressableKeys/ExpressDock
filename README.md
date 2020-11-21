@@ -5,9 +5,9 @@
   <h1>Express Dock</h1>
   A customizable toolbar for touch.
 </div>
-<br><br><br>
-Express dock is currently in heavy development. Some things may work, but most don't!
-<br><br><br>
+<br><br>
+## Express dock is currently in heavy development. Some things may work, but most don't!
+<br><br>
 
 ### Art focused.
 Express Dock was originally made for artists, featuring convienient access to tools in desktop art applications.
