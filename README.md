@@ -1,9 +1,9 @@
 <div align="center">
   <img src="https://github.com/ExpressableKeys/ExpressDock/raw/master/repo/images/logo-full.png">
-  <br><br><br>
-  <img src="https://github.com/ExpressableKeys/ExpressDock/raw/master/repo/images/github-preview.png">
   <h1>Express Dock</h1>
   A customizable art toolbar for touch.
+  <br><br><br>
+  <img src="https://github.com/ExpressableKeys/ExpressDock/raw/master/repo/images/github-preview.png">
 </div>
 <br><br>
 <b>Express dock is currently in heavy development. Some things may work, but most don't!</b>
