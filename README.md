@@ -6,7 +6,7 @@
   <img src="https://github.com/ExpressableKeys/ExpressDock/raw/master/repo/images/github-preview.png">
 </div>
 <br><br>
-<b>Express dock is currently in heavy development. Some things may work, but most don't!</b>
+<b>Express dock is currently being rewritten to fit MVVM conventions and standards. Some things work, but others don't!</b>
 <br><br>
 
 ### Art focused.
