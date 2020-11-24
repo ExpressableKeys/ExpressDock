@@ -23,7 +23,11 @@ namespace ExpressableToolbar.Properties {
             }
         }
         
+        /// <summary>
+        /// The starting position on the screen for the dock.
+        /// </summary>
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("The starting position on the screen for the dock.")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
         public global::System.Drawing.Point StartPosition {
@@ -35,7 +39,11 @@ namespace ExpressableToolbar.Properties {
             }
         }
         
+        /// <summary>
+        /// Sets whether the dock can move or not.
+        /// </summary>
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("Sets whether the dock can move or not.")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool Pinned {
@@ -47,7 +55,12 @@ namespace ExpressableToolbar.Properties {
             }
         }
         
+        /// <summary>
+        /// Determines whether the previous value is retained when changing tool values (ie. brush size)
+        /// </summary>
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("Determines whether the previous value is retained when changing tool values (ie. " +
+            "brush size)")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool UseDelta {
@@ -59,7 +72,11 @@ namespace ExpressableToolbar.Properties {
             }
         }
         
+        /// <summary>
+        /// Changes the grip&apos;s location to either the left or right hand side of the dock.
+        /// </summary>
         [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("Changes the grip\'s location to either the left or right hand side of the dock.")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool LeftHanded {
@@ -68,6 +85,50 @@ namespace ExpressableToolbar.Properties {
             }
             set {
                 this["LeftHanded"] = value;
+            }
+        }
+        
+        /// <summary>
+        /// Determines the sensitivity of changing tool values.
+        /// </summary>
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("Determines the sensitivity of changing tool values.")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public double MouseSensitivity {
+            get {
+                return ((double)(this["MouseSensitivity"]));
+            }
+            set {
+                this["MouseSensitivity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("32")]
+        public int IconSize {
+            get {
+                return ((int)(this["IconSize"]));
+            }
+            set {
+                this["IconSize"] = value;
+            }
+        }
+        
+        /// <summary>
+        /// Sets whether to use vertical orientation or not.
+        /// </summary>
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsDescriptionAttribute("Sets whether to use vertical orientation or not.")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool VerticalOrientation {
+            get {
+                return ((bool)(this["VerticalOrientation"]));
+            }
+            set {
+                this["VerticalOrientation"] = value;
             }
         }
     }

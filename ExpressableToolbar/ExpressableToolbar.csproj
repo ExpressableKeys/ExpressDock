@@ -21,7 +21,7 @@
     <None Remove="Resources\Icons\Icon_Brush_Radius.png" />
     <None Remove="Resources\Icons\Icon_Color.png" />
     <None Remove="Resources\Icons\Icon_Hamburger.png" />
-    <None Remove="test.png" />
+    <None Remove="Resources\Icons\Icon_Logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +37,8 @@
 
   <ItemGroup>
     <PackageReference Include="Hardcodet.NotifyIcon.Wpf.NetCore" Version="1.0.14" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
+    <PackageReference Include="MvvmLight" Version="5.4.1.1" />
     <PackageReference Include="WpfScreenHelper" Version="1.0.0" />
   </ItemGroup>
 
@@ -47,7 +49,9 @@
     <Resource Include="Resources\Icons\Icon_Brush_Radius.png" />
     <Resource Include="Resources\Icons\Icon_Color.png" />
     <Resource Include="Resources\Icons\Icon_Hamburger.png" />
-    <Resource Include="test.png" />
+    <Resource Include="Resources\Icons\Icon_Logo.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -63,6 +67,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModel\Helpers\" />
   </ItemGroup>
 
 </Project>

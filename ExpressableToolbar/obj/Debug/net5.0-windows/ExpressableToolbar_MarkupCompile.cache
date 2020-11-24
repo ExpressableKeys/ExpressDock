@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\App.xaml
-3-1551584096
+8471842566
 
-16-738447564
-205-833888916
-MainWindow.xaml;ToolbarShadow.xaml;Windows\Settings\SettingsWindow.xaml;
+25-1442059974
+206554014820
+View\Controls\ExpressNotifyControl.xaml;View\Controls\SettingsEntryBoolControl.xaml;View\Controls\ToolbarControl.xaml;View\Controls\ToolControl.xaml;View\Controls\ToolOverlay.xaml;View\SettingsWindow.xaml;View\ToolbarShadow.xaml;View\ToolbarWindow.xaml;
 
 False
 

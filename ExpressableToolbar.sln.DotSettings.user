@@ -1,0 +1,15 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/RunConfigs/Config/=9836042B2E3A654792B635D043288708/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/RunConfigs/Config/=9836042B2E3A654792B635D043288708/Name/@EntryValue">ExpressableToolbar</s:String>
+	<s:String x:Key="/Default/RunConfigs/Config/=9836042B2E3A654792B635D043288708/ProjectGuid/@EntryValue">1D0D8D40BAC1EF439A31D476DF9BEAED</s:String>
+	<s:String x:Key="/Default/RunConfigs/Config/=9836042B2E3A654792B635D043288708/Type/@EntryValue">project</s:String>
+	<s:Boolean x:Key="/Default/RunConfigs/Config/=A22E28891373444E823656C41EDBBD97/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/RunConfigs/Config/=A22E28891373444E823656C41EDBBD97/DefaultAction/@EntryValue">run</s:String>
+	<s:String x:Key="/Default/RunConfigs/Config/=A22E28891373444E823656C41EDBBD97/Name/@EntryValue">ExpressableToolbar</s:String>
+	<s:String x:Key="/Default/RunConfigs/Config/=A22E28891373444E823656C41EDBBD97/ProjectGuid/@EntryValue">1D0D8D40BAC1EF439A31D476DF9BEAED</s:String>
+	<s:String x:Key="/Default/RunConfigs/Config/=A22E28891373444E823656C41EDBBD97/Type/@EntryValue">project</s:String>
+	<s:Boolean x:Key="/Default/RunConfigs/Config/=A7634A9D1FB3D74482C269BD1C16562C/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/RunConfigs/Config/=A7634A9D1FB3D74482C269BD1C16562C/Type/@EntryValue">project</s:String>
+	<s:String x:Key="/Default/RunConfigs/Config/=A7634A9D1FB3D74482C269BD1C16562C/Name/@EntryValue">ExpressableToolbar</s:String>
+	<s:String x:Key="/Default/RunConfigs/Config/=A7634A9D1FB3D74482C269BD1C16562C/ProjectGuid/@EntryValue">1D0D8D40BAC1EF439A31D476DF9BEAED</s:String>
+	<s:String x:Key="/Default/RunConfigs/Active/@EntryValue">9836042B2E3A654792B635D043288708</s:String></wpf:ResourceDictionary>

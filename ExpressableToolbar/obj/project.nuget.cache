@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "P64qSulk5nQAf7XVsoPW9yDQTVmHsNfQ/QLkZnPw7zFc1Pkgc1NqOT1XeJaLmDX49JakrDtx8GHwl46aNmK2+w==",
+  "dgSpecHash": "Aj43mKqbmj8M2kShE08ETODtgWTYrjQh+4cRsqXlkl2SHI0+u/25vukiRHMCDTXgo0bm/bGaMjSr7wdhRfrs7Q==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Expressable\\ExpressableToolbar\\ExpressableToolbar\\ExpressableToolbar.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wrapp\\.nuget\\packages\\hardcodet.notifyicon.wpf.netcore\\1.0.14\\hardcodet.notifyicon.wpf.netcore.1.0.14.nupkg.sha512",
+    "C:\\Users\\wrapp\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+    "C:\\Users\\wrapp\\.nuget\\packages\\mvvmlight\\5.4.1.1\\mvvmlight.5.4.1.1.nupkg.sha512",
     "C:\\Users\\wrapp\\.nuget\\packages\\wpfscreenhelper\\1.0.0\\wpfscreenhelper.1.0.0.nupkg.sha512"
   ],
   "logs": []

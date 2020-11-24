@@ -9,6 +9,8 @@
       "ExpressableToolbar/1.0.0": {
         "dependencies": {
           "Hardcodet.NotifyIcon.Wpf.NetCore": "1.0.14",
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.19",
+          "MvvmLight": "5.4.1.1",
           "WpfScreenHelper": "1.0.0",
           "Interop.Photoshop": "1.0.0.0"
         },
@@ -24,6 +26,15 @@
           }
         }
       },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.Xaml.Behaviors.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.19.35512"
+          }
+        }
+      },
+      "MvvmLight/5.4.1.1": {},
       "WpfScreenHelper/1.0.0": {
         "runtime": {
           "lib/netcoreapp3.0/WpfScreenHelper.dll": {
@@ -54,6 +65,20 @@
       "sha512": "sha512-aNwwax4+C/xhIxTbwKHJnxh0A6hWGnqXZtppZ+/lkE8VOL+a2WuMOBgWpkiUk6Tv+pi1bc+yuHo0lh4Md6KEFw==",
       "path": "hardcodet.notifyicon.wpf.netcore/1.0.14",
       "hashPath": "hardcodet.notifyicon.wpf.netcore.1.0.14.nupkg.sha512"
+    },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5sPWkbqImc2t1aQwIfJcKsUo7tOg1Tr8+6xVzZJB56Nzt4u9NlpcLofgdX/aRYpPKdWDA3U23Akw1KQzU5e82g==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.19",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512"
+    },
+    "MvvmLight/5.4.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fTUDMWT//ChZGd7Q5k0IaJuIXgh+FM43pCStxup7kgh1MQXvC48CjpjWkp5Auru/YXhHOJOMgD1NdtFZgn6K2g==",
+      "path": "mvvmlight/5.4.1.1",
+      "hashPath": "mvvmlight.5.4.1.1.nupkg.sha512"
     },
     "WpfScreenHelper/1.0.0": {
       "type": "package",

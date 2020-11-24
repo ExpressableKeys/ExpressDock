@@ -7,15 +7,45 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Windows\Settings\SettingsWindow.xaml.cs">
+    <Compile Update="View\Controls\ExpressNotifyControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Controls\SettingsEntryBoolControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Controls\ToolControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Controls\ToolOverlay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\SettingsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Controls\ToolbarControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="MainWindow.xaml">
+    <Page Update="View\Controls\ExpressNotifyControl.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\Settings\SettingsWindow.xaml">
+    <Page Update="View\Controls\SettingsEntryBoolControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Controls\ToolControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Controls\ToolOverlay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ToolbarWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Controls\ToolbarControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

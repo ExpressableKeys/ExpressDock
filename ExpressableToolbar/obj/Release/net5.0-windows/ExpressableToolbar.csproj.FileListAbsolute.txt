@@ -1,0 +1,15 @@
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\ExpressableToolbar.csprojAssemblyReference.cache
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\Interop.Photoshop.dll
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\ExpressableToolbar.csproj.ResolveComReference.cache
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\View\ToolbarShadow.baml
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\View\Controls\ExpressNotifyControl.g.cs
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\View\Controls\ToolbarControl.g.cs
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\View\Controls\ToolControl.g.cs
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\View\Controls\ToolOverlay.g.cs
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\View\SettingsWindow.g.cs
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\View\ToolbarShadow.g.cs
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\View\ToolbarWindow.g.cs
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\App.g.cs
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\ExpressableToolbar_MarkupCompile.cache
+C:\Projects\Expressable\ExpressableToolbar\ExpressableToolbar\obj\Release\net5.0-windows\ExpressableToolbar_MarkupCompile.lref

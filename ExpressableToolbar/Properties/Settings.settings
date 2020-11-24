@@ -2,16 +2,25 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ExpressableToolbar.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="StartPosition" Type="System.Drawing.Point" Scope="User">
+    <Setting Name="StartPosition" Description="The starting position on the screen for the dock." Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
-    <Setting Name="Pinned" Type="System.Boolean" Scope="User">
+    <Setting Name="Pinned" Description="Sets whether the dock can move or not." Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="UseDelta" Type="System.Boolean" Scope="User">
+    <Setting Name="UseDelta" Description="Determines whether the previous value is retained when changing tool values (ie. brush size)" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="LeftHanded" Type="System.Boolean" Scope="User">
+    <Setting Name="LeftHanded" Description="Changes the grip's location to either the left or right hand side of the dock." Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MouseSensitivity" Description="Determines the sensitivity of changing tool values." Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.5</Value>
+    </Setting>
+    <Setting Name="IconSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">32</Value>
+    </Setting>
+    <Setting Name="VerticalOrientation" Description="Sets whether to use vertical orientation or not." Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

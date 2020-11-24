@@ -1,0 +1,26 @@
+﻿<Window x:Class="ExpressableToolbar.View.SettingsWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="clr-namespace:ExpressableToolbar.ViewModel"
+		xmlns:c="clr-namespace:ExpressableToolbar.View.Controls"
+		xmlns:p="clr-namespace:ExpressableToolbar.Properties"
+		d:DataContext="{d:DesignInstance vm:SettingsViewModel, IsDesignTimeCreatable=True}"
+		mc:Ignorable="d"
+		Style="{StaticResource ExpressWindow}"
+		BorderThickness="0"
+		Title="Settings"
+		Height="450"
+		Width="600">
+	<StackPanel Margin="10, 10, 10, 8">
+
+		<c:SettingsEntryBoolControl Title="Vertical Orientation"
+		                        Description="Orients the dock vertically rather than horizontally."
+		                        Value="False" />
+
+		<c:SettingsEntryBoolControl Title="Pinned"
+		                        Description="Pin the dock in place, disabling it from moving."
+		                        Value="True" />
+	</StackPanel>
+</Window>
